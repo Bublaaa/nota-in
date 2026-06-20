@@ -19,15 +19,28 @@
 }
 
 @theme {
-  --color-accent: hsl(193 77 51);
+  --color-accent: #22b7e2;
+  --color-primary: #2563eb;
+
   --color-accent-hover: hsl(21 100 60);
   --color-dark: hsl(0 0 23);
   --color-dark-hover: hsl(0 0 10);
   --color-white-shadow: hsl(0 0 97);
+
   --color-gray: #ced4da;
   --color-light-gray: #e5e7eb;
+
   --color-red: #dc2626;
   --color-light-red: #fef2f2;
+
+  --color-yellow: #ff6900;
+  --color-light-yellow: #fef9c2;
+
+  --color-green: #008236;
+  --color-light-green: #dcfce7;
+
+  --color-blue: #2563eb;
+  --color-light-blue: #dbeafe;
 }
 
 @layer base {
