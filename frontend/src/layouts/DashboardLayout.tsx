@@ -5,12 +5,12 @@ const Sidebar = lazy(() => import("../components/sidebar/Sidebar"));
 
 export default function DashboardLayout() {
   return (
-    <div className="flex flex-row w-full h-screen items-end bg-white-shadow overflow-y-auto scrollbar-hidden">
-      <div className="h-full w-fit bg-blue-300">
-        <Sidebar />
-      </div>
-      <div className="h-full w-full bg-blue-200">
-        <h1>Outlet</h1>
+    <div className="flex h-screen w-full overflow-hidden bg-white">
+      {/* Sidebar */}
+      <Sidebar />
+
+      {/* Main content */}
+      <div className="flex-1 overflow-auto">
         <Outlet />
       </div>
     </div>

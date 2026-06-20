@@ -24,8 +24,10 @@
   --color-dark: hsl(0 0 23);
   --color-dark-hover: hsl(0 0 10);
   --color-white-shadow: hsl(0 0 97);
-  --color-gray: hsl(210 14 83);
-  --color-light-gray: hsl(220 13 91);
+  --color-gray: #ced4da;
+  --color-light-gray: #e5e7eb;
+  --color-red: #dc2626;
+  --color-light-red: #fef2f2;
 }
 
 @layer base {

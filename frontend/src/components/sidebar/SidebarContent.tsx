@@ -1,4 +1,4 @@
-import { LayoutDashboard, Package, Circle } from "lucide-react";
+import { LayoutDashboard, Package, Circle, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import type { SidebarLink } from "../../types/sidebar.link";
@@ -27,7 +27,11 @@ const sidebarLinks: SidebarLink[] = [
   },
 ];
 
-export default function SidebarContent() {
+type SidebarContentProps = {
+  isCollapsed: boolean;
+};
+
+export default function SidebarContent({ isCollapsed }: SidebarContentProps) {
   const [openMenus, setOpenMenus] = useState<string[]>([]);
 
   const toggleMenu = (label: string) => {
@@ -37,7 +41,7 @@ export default function SidebarContent() {
   };
 
   return (
-    <ul className="space-y-2">
+    <ul className="px-4 py-4">
       {sidebarLinks.map((link) => {
         const Icon = link.icon;
 
@@ -50,25 +54,30 @@ export default function SidebarContent() {
               {/* Parent button */}
               <button
                 onClick={() => toggleMenu(link.label)}
-                className="
-                  flex w-full items-center justify-between px-3 py-3
-                  bg-white text-gray-600 hover:bg-gray-100
-                "
+                className={`flex w-full items-center px-3 py-5 bg-white text-gray-600 hover:bg-light-gray rounded-lg ${isCollapsed ? "justify-center" : "justify-between"}`}
               >
                 <div className="flex items-center">
                   <Icon className="mr-3 h-5 w-5" />
-                  <span className="text-sm font-medium">{link.label}</span>
+                  <span
+                    className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"}`}
+                  >
+                    {link.label}
+                  </span>
                 </div>
 
-                <span>{isOpen ? "−" : "+"}</span>
+                {!isCollapsed && (
+                  <ChevronRight
+                    className={`transition-transform duration-200 ${
+                      isOpen ? "rotate-90" : ""
+                    }`}
+                  />
+                )}
               </button>
 
               {/* Children */}
               {isOpen && (
                 <ul className="ml-6 mt-2 space-y-2">
                   {link.children.map((child) => {
-                    const ChildIcon = child.icon;
-
                     return (
                       <li key={child.href}>
                         <NavLink
@@ -84,7 +93,6 @@ export default function SidebarContent() {
                             `
                           }
                         >
-                          <ChildIcon className="mr-2 h-4 w-4" />
                           {child.label}
                         </NavLink>
                       </li>
@@ -103,17 +111,22 @@ export default function SidebarContent() {
               to={link.href!}
               className={({ isActive }) =>
                 `
-                flex items-center px-3 py-3
+                flex items-center px-3 py-5
                 ${
                   isActive
                     ? "bg-white text-accent"
-                    : "bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-900"
+                    : "bg-white text-gray-500 hover:bg-light-gray rounded-lg hover:text-gray-900"
                 }
+                ${isCollapsed ? "justify-center" : "justify-left"}
                 `
               }
             >
               <Icon className="mr-3 h-5 w-5" />
-              <span className="text-sm font-medium">{link.label}</span>
+              <span
+                className={`overflow-hidden whitespace-nowrap transition-all duration-300 ${isCollapsed ? "w-0 opacity-0" : "w-auto opacity-100"}`}
+              >
+                {link.label}
+              </span>
             </NavLink>
           </li>
         );
