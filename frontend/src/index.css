@@ -41,6 +41,9 @@
 
   --color-blue: #2563eb;
   --color-light-blue: #dbeafe;
+
+  --color-purple: #7f22fe;
+  --color-light-purple: #f5f3ff;
 }
 
 @layer base {

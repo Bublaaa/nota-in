@@ -13,10 +13,10 @@ export default function SidebarHeader({
       <div className="flex w-fit flex-row items-center gap-2">
         <div>Logo</div>
         {!isCollapsed && <h6 className="whitespace-nowrap">Nota - in</h6>}
-        <button onClick={onToggle} className="cursor-pointer">
-          <Menu />
-        </button>
       </div>
+      <button onClick={onToggle} className="cursor-pointer">
+        <Menu />
+      </button>
     </div>
   );
 }

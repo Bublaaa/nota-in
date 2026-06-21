@@ -10,7 +10,7 @@ export default function DashboardLayout() {
       <Sidebar />
 
       {/* Main content */}
-      <div className="flex-1 overflow-auto p-2">
+      <div className="flex-1 overflow-auto p-8">
         <Outlet />
       </div>
     </div>
