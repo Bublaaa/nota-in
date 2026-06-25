@@ -8,10 +8,76 @@ import {
   ShoppingCart,
   TrendingDown,
   TrendingUp,
+  Upload,
   Wallet,
 } from "lucide-react";
 import OverviewCard from "../../components/card/OverviewCard";
 import BalanceCard from "../../components/card/BalanceCard";
+import Dropdown from "../../components/input/dropdown";
+import { useState } from "react";
+import IconLabelButton from "../../components/button/IconLabelButton";
+
+function Filter() {
+  const [monthFilter, setMonthFilter] = useState("february");
+  const [locationFilter, setLocationFilter] = useState("all");
+  const [yearFilter, setYearFilter] = useState("2026");
+
+  return (
+    <div className="grid p-5 grid-cols-2 md:grid-cols-4 gap-5 rounded-2xl border-1 border-light-gray shadow-sm items-end">
+      <Dropdown
+        value={locationFilter}
+        onChange={setLocationFilter}
+        options={[
+          {
+            label: "Semua Lokasi",
+            value: "all",
+          },
+          {
+            label: "Fresh Laundry",
+            value: "fresh",
+          },
+        ]}
+      />
+      <Dropdown
+        value={monthFilter}
+        onChange={setMonthFilter}
+        options={[
+          {
+            label: "Januari",
+            value: "january",
+          },
+          {
+            label: "Februari",
+            value: "february",
+          },
+          {
+            label: "Maret",
+            value: "march",
+          },
+        ]}
+      />
+      <Dropdown
+        value={yearFilter}
+        onChange={setYearFilter}
+        options={[
+          {
+            label: "2027",
+            value: "2027",
+          },
+          {
+            label: "2026",
+            value: "2026",
+          },
+          {
+            label: "2025",
+            value: "2025",
+          },
+        ]}
+      />
+      <IconLabelButton label={"Export Excel"} Icon={Upload} />
+    </div>
+  );
+}
 
 function Overview() {
   return (
@@ -102,6 +168,8 @@ function Balance() {
 export default function OverviewPage() {
   return (
     <div className="flex flex-col gap-5">
+      {/* Filter */}
+      <Filter />
       {/* Overview */}
       <Overview />
       {/* Balance */}

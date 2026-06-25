@@ -27,7 +27,9 @@
   --color-dark-hover: hsl(0 0 10);
   --color-white-shadow: hsl(0 0 97);
 
+  --color-dark-gray: #99a1af;
   --color-gray: #ced4da;
+  --color-medium-gray: #f9fafb;
   --color-light-gray: #e5e7eb;
 
   --color-red: #dc2626;

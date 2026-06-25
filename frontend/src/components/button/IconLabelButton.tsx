@@ -26,14 +26,12 @@ export default function IconLabelButton({
     <button
       onClick={onClick}
       className={`
-        flex items-center gap-2 px-4 py-2 rounded-lg
-        transition-colors duration-200
-        cursor-pointer
+        flex items-center gap-2 px-4 py-3 rounded-2xl transition-colors duration-200 cursor-pointer justify-center shadow-md
         ${variantStyles[type]}
       `}
     >
       <Icon className="h-5 w-5" />
-      <span>{label}</span>
+      <span className="font-semibold">{label}</span>
     </button>
   );
 }
